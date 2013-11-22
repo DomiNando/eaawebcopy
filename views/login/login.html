@@ -77,6 +77,10 @@ Released   : 20130509
                                         sessionStorage.setItem("role", data.role);
                                         sessionStorage.setItem("username", data.username);
                                         sessionStorage.setItem("agencyPhoneNumber", data.agencyPhoneNumber);
+                                        var employeeUserName = data.username;
+                                        var companyPhoneNumber = data.agencyPhoneNumber;
+                                        chat.setUserNameAndPhoneNumber(employeeUserName, companyPhoneNumber);
+                                        chat.model.login(companyPhoneNumber, employeeUserName);
                                         window.location.replace("/sp");
                                     }
 
