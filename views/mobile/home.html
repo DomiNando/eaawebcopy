@@ -1,0 +1,172 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <link rel='stylesheet', href='/stylesheets/style.css'>      
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>                       
+            $.fn.serializeObject = function()
+            {
+                var o = {};
+                var a = this.serializeArray();
+                $.each(a, function() {
+                    if (o[this.name] !== undefined) {
+                        if (!o[this.name].push) {
+                            o[this.name] = [o[this.name]];
+                        }
+                        o[this.name].push(this.value || '');
+                    } else {
+                        o[this.name] = this.value || '';
+                    }
+                });
+                return o;
+            };
+     
+            $(function () {
+                $("#register").click(function(){
+                    alert('enter');
+        
+                    var jd = JSON.stringify($("#registerForm").serializeObject());
+                    alert(jd);
+
+                    $.ajax({
+                        type: "POST",
+                        url :"/registerDevice",
+                        contentType: "application/json",
+                        data: jd,
+                        success : function(data) {
+                            alert('works!');
+                        },
+                        error: function(data){
+                            alert('fails');
+                        }
+                    });
+                });
+            });
+            
+            $(function () {
+                $("#service").click(function(){
+                    //alert('enter');
+        
+                    var jd = $("#serviceForm").serialize();
+                     
+                    $.ajax({
+                        type: "GET",
+                        url :"/mobileEmergency",
+                        contentType: "application/json",
+                        data: jd,
+                        success : function(data) {
+                            //alert('success');
+                            //selected value > 0 if value selected 
+                            //alert('category ' + $("input[type='radio'][name='category']:checked").val());
+                          
+                            alert(data.result);
+                            if(data.result != 'Empty'){
+                                if( $("input[type='radio'][name='category']:checked").val() != 'hospital' ){                                 
+                                    alert('phoneList >>> data.phoneList = ' + data.phoneList );
+                                    
+                                    var phoneList = data.phoneList.split(",");
+                                    for(var index = 0; index < phoneList.length - 1; index++)
+                                        alert('phoneList['+index+'] = ' + phoneList[index]);
+                                }
+                                else{                                
+                                    alert('coordinate >>> data.latitudeList = ' + data.latitudeList + 
+                                            ' data.longitudeList = ' + data.longitudeList );                                                                    
+                                
+                                    var latitudeList = data.latitudeList.split(",");
+                                    var longitudeList = data.longitudeList.split(",");
+                                    for(var index = 0; index < latitudeList.length - 1; index++)
+                                        alert('latitudeList['+index+'] = ' + latitudeList[index] +
+                                                    ' longitudeList['+index+'] = ' + longitudeList[index]);
+                                }
+                            }
+                        },
+                        error: function(data){
+                            alert('fails');
+                        }
+                    });
+                });
+            });
+            
+            $(function () {
+                $("#userList").click(function(){
+        
+                    $.ajax({
+                        type: "GET",
+                        url :"/userList",
+                        contentType: "application/json",
+                        success : function(data) {
+                            for(var index = 0; index < data.length; index++)
+                                alert('username '+data[index].username +' ------------ agencyPhoneNumber '+data[index].agencyPhoneNumber);
+                        },
+                        error: function(data){
+                            alert('fails');
+                        }
+                    });
+                });
+            });
+        
+        </script>
+    </head>
+    <body>
+        <div>
+           <form name="registerDevice" id="registerForm" action="/registerDevice" method="post">
+                <p>Register Device</p>
+                <div>
+                    Phone Number<input type='text' name='clientPhoneNumber' value=''></input>
+                </div>
+                <div>
+                    Name<input type='text' name='name' value=''></input>
+                </div>
+                <div>
+                    <input type='button' name='register' id="register" value='Register Device'></input>
+                </div>
+            </form>
+        </div>
+        <div>
+            <form name="mobileEmergency" id="serviceForm" action="/mobileEmergency" method="post">
+                <div>
+                    <br/>
+                    <br/>
+                    <p>Service Request</p>
+                </div>
+                <div>
+                    Category<input type='radio' name='category' value='ambulance'>Ambulance</input>
+                    <input type='radio' name='category' value='firefighter'>Firefighter</input>
+                    <input type='radio' name='category' value='hospital'>Hospital</input>
+                    <input type='radio' name='category' value='police'>Police</input>
+                    <input type='radio' name='category' value='tow'>Tow</input>               
+                </div>
+                <div>
+                    City<input type='text' name='city' value=''></input>
+                </div>
+                <div>
+                    State<input type='text' name='state' value=''></input>
+                </div>
+                <div>
+                   Country<input type='text' name='country' value=''></input>
+                </div>
+                <div>
+                   Phone Number<input type='text' name='clientPhoneNumber' value=''></input>
+                </div>
+                <div>
+                    Latitude<input type='text' name='latitude' value=''></input>
+                </div>
+                <div>
+                    Longitude<input type='text' name='longitude' value=''></input>
+                </div>
+                <div>
+                    <input type='button' name='request' id='service'  value='Request Service'></input>
+                </div>
+            </form>
+        </div>
+        <div>
+           <form name="registerDevice" id="formuserlist" action="/registerDevice" method="post">
+                <p>User List</p>
+                <div>
+                    <input type='button' name='register' id="userList" value='user list'></input>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
