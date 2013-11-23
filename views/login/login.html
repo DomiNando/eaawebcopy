@@ -23,14 +23,6 @@ Released   : 20130509
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
-	<script src="http://eaa.ece.uprm.edu:3500/js/stapes.js"></script>
-	<script type="text/javascript" src="http://eaa.ece.uprm.edu:3500/js/sock.js"></script>
-	<script type="text/javascript" src="http://eaa.ece.uprm.edu:3500/js/chatView.js"></script>
-	<script type="text/javascript" src="http://eaa.ece.uprm.edu:3500/js/chatModels.js"></script>
-	<script type="text/javascript" src="http://eaa.ece.uprm.edu:3500/js/chatStore.js"></script>
-	<script type="text/javascript" src="http://eaa.ece.uprm.edu:3500/js/chatController.js"></script>
-	<script type="text/javascript" src="http://eaa.ece.uprm.edu:3500/js/chat.js"></script>
 	<script>
       //<!-----------TRANSFORMS a String Object to a JSON Object--------->
       
@@ -88,7 +80,6 @@ Released   : 20130509
                                         sessionStorage.setItem("role", data.role);
                                         sessionStorage.setItem("username", data.username);
                                         sessionStorage.setItem("agencyPhoneNumber", data.agencyPhoneNumber);
-                                        chat.model.login(data.agencyPhoneNumber, data.username);
                                         window.location.replace("/sp");
                                     }
 
@@ -240,27 +231,6 @@ Released   : 20130509
     <p>Copyright (c) 2013 Sitename.com. All rights reserved. Images by <a href="http://fotogrph.com/">Fotogrph</a>. Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
 </div>
 <!-- end #footer -->
-<!-- START CHAT -->
-<div id="chat-bar">
-    <div id="chat">
-        <header>
-            <span id="minimize-chat" class="widget">_</span>
-            <span id="close-chat" class="widget">x</span>
-        </header>
-        <div id="content">
-            <ul id="messages">
-            </ul>
-        </div>
-        <div id="input">
-            <input type="text" placeholder="Send Message">
-        </div>
-    </div>
-</div>
 </body>
-<style>
-	#chat_bar {
-		display: none;
-		}
-</style>
 <!-- END CHAT -->
 </html>
