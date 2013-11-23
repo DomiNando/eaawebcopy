@@ -23,7 +23,7 @@ Released   : 20130509
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
         //<!-----------TRANSFORMS a String Object to a JSON Object--------->
-        $.prototype.serializeObject = function() //$.fn.serializeObject
+        $.fn.serializeObject = function() //$.fn.serializeObject
         {
             var o = {};
             var a = this.serializeArray();
