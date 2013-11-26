@@ -103,7 +103,7 @@ app.get('/mobileEmergency', function(req, res){
     else
         mobile.servicePhoneNumber(req, res);
 });
-//app.get('/servicePhoneNumber', mobile.servicePhoneNumber);
+app.get('/mobileChat', mobile.mobileChat);
 //app.get('/hospitalPhoneNumber', mobile.hospitalPhoneNumber);
 app.get('/registerDevice', mobile.registerDevice);
 
