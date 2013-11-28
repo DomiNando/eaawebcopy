@@ -452,6 +452,7 @@ Released   : 20130509
                 });
                 //<!----------------------------------------------------Log out-------------------------------------------------------->
                 function logOut(){
+                chat.store.clear();
                 chat.model.server.close();
                 sessionStorage.clear();
                 window.location.replace("/");
