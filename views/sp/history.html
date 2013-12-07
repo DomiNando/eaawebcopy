@@ -238,7 +238,7 @@ $(function() {
     //<!----------------------------------------------------Log out-------------------------------------------------------->
     function logOut(){
       chat.store.clear();
-      chat.model.server.close();
+      chat.model.close();
       sessionStorage.clear();
       window.location.replace("/");
     };
