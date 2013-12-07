@@ -152,10 +152,7 @@
                 }
                 $("#oldAgencyPhoneNumber").val(sessionStorage.getItem("agencyPhoneNumber"));
                 
-				jQuery.validator.setDefaults({
-				debug: true,
-				success: "valid"
-				});
+				
 				$( "#add" ).validate({
 				rules: {
 					clientPhoneNumber: {
