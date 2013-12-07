@@ -278,12 +278,7 @@ $(function(){
                 success : function(data) {
                     alert("User successfully deleted");
 
-					$("#results").empty();
-                    $("#sidebar1").css("display","inline");
-                    $("#sidebar2").css("display","none");
-                    $(".entry").css("display", "inline");
-                    $(".entry1").css("display", "none");
-                    $("#go").attr("disabled", false);
+					setTimeout(function(){location.reload()}, 100);
                 },
                 error: function(data){
                     alert("error user delete");
@@ -317,12 +312,7 @@ $(function(){
 
                     alert("Service successfully deleted");
 					
-					$("#results").empty();
-                    $("#sidebar1").css("display","inline");
-                    $("#sidebar3").css("display","none");
-                    $(".entry").css("display", "inline");
-                    $(".entry1").css("display", "none");
-                    $("#go").attr("disabled", false);
+					setTimeout(function(){location.reload()}, 100);
                 },
                 error: function(data){
                     alert("error service delete");
