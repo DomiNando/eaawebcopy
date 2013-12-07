@@ -101,7 +101,8 @@ Released   : 20130509
         //<!------------------------------------------ADD user to the system------------------------------------------->
         $(function(){
             $("#submit").click(function(){
-
+				
+			
                 var JSONObject = JSON.stringify($("#main").serializeObject());
                 if(JSON.parse(JSONObject).name =="" || JSON.parse(JSONObject).username =="" || JSON.parse(JSONObject).password =="" || JSON.parse(JSONObject).email =="" ||JSON.parse(JSONObject).role =="" || JSON.parse(JSONObject).agencyPhoneNumber ==""){
                     alert("Please fill all the fields to add a new user to the system");
@@ -176,8 +177,8 @@ Released   : 20130509
             <div class="post">
                 <h2 id="greeting" class="title">New User</h2>
                 <div class="entry">
-                    <form id="main" action="" method="post">
-                        <h3>Name:<input type="text"  name="name" maxlength="50" size="50"/></h3><br>
+                    <form id="main">
+                        <h3>Name:<input type="text"  id="name" name="name" maxlength="50" size="50"/></h3><br>
                         <h3>Username:<input type="text" id="username" name="username" maxlength="40" size="30"/></h3><br>
                         <h3>Password:<input type="text"  name="password" maxlength="16" size="30"/></h3><br>
                         <h3>E-mail:<input type="email"  name="email" pattern="[^ @]*@[^ @]*" /></h3><br>

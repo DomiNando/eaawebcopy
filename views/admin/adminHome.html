@@ -70,12 +70,12 @@ $(function(){
             success : function(data) {
 
                 if( data != ""){
-                    alert('data.length '+data.length);
 
                     $(".entry").css("display", "none");
                     $(".entry1").css("display", "inline");
                     $("#go").attr("disabled", true);
-                    $("#main").trigger("reset");
+                    //$("#main").trigger("reset");
+					$("#main").empty();
 
                     var limit = data.length;
                     var i;
@@ -278,7 +278,7 @@ $(function(){
                 success : function(data) {
                     alert("User successfully deleted");
 
-
+					$("#results").empty();
                     $("#sidebar1").css("display","inline");
                     $("#sidebar2").css("display","none");
                     $(".entry").css("display", "inline");
@@ -316,7 +316,8 @@ $(function(){
                 success : function(data) {
 
                     alert("Service successfully deleted");
-
+					
+					$("#results").empty();
                     $("#sidebar1").css("display","inline");
                     $("#sidebar3").css("display","none");
                     $(".entry").css("display", "inline");
