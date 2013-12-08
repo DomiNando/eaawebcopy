@@ -74,8 +74,8 @@ $(function(){
                     $(".entry").css("display", "none");
                     $(".entry1").css("display", "inline");
                     $("#go").attr("disabled", true);
-                    //$("#main").trigger("reset");
-					$("#main").empty();
+                    $("#main").trigger("reset");
+					$("#results").empty();
 
                     var limit = data.length;
                     var i;
